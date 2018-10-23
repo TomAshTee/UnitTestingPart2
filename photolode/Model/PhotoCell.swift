@@ -14,18 +14,16 @@ class PhotoCell: UITableViewCell {
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    func downloadImage(withUrlString urlString: String) {
         spinner.activityIndicatorViewStyle = .whiteLarge
         spinner.hidesWhenStopped = true
         spinner.startAnimating()
-    }
-    
-    func downloadImage(withUrlString urlString: String) {
+
         let url = URL(string: urlString)!
         
         if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
             self.photoImageView.image = imageFromCache
+            self.spinner.stopAnimating()
             return
         }
         

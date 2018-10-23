@@ -21,6 +21,14 @@ class DownloadClient {
             //code to create image
         }.resume()
     }
+    
+    func terribleFunctionYouWouldNeverWrite() {
+        let totalValue = 1000000
+        var currentValue = 0
+        for i in 1...totalValue {
+            currentValue = i
+        }
+    }
 }
 
 extension URLSession: SessionProtocol {}
